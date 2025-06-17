@@ -1,0 +1,10 @@
+this is a sample text by Θωμάς.
+
+it was written in june 2025.
+
+The author is Some One.
+
+here is the alphabet in lower case letters: abcdefghijklmnopqrstuvwxyz
+Here is the alphabet in upper case letters: ABCDEFGHIJKLMNOPQRSTUVWXYZ
+
+they all look absolutely correct.

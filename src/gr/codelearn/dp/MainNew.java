@@ -1,5 +1,10 @@
 package gr.codelearn.dp;
 
+import gr.codelearn.dp.service.EnglishChecker;
+import gr.codelearn.dp.service.FileDataReader;
+import gr.codelearn.dp.service.FileDataWriter;
+import gr.codelearn.dp.service.UpperCaseConverter;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -34,36 +39,21 @@ public class MainNew {
     }
 
     private static List<String> convertToUpper(List<String> lines) {
-        List<String> newLines = new ArrayList<>();
-        for (String line : lines) {
-            newLines.add(line.toUpperCase());
-        }
-        return newLines;
+        List<String> upperLines = UpperCaseConverter.convertToUpper(lines);
+        return upperLines;
     }
 
     private static void saveToFile(final String fileName, List<String> lines) throws IOException {
-        PrintWriter writer = new PrintWriter(new FileWriter(fileName));
-        for (String line : lines)
-            writer.write(line + "\n");
-        writer.close();
+        FileDataWriter.saveToFile(fileName, lines);
     }
 
     private static boolean isEnglish(List<String> lines) {
-        String lowerCase = lines.get(0).toLowerCase();
-        return lowerCase.contains("e") ||
-               lowerCase.contains("t") ||
-               lowerCase.contains("a") ||
-               lowerCase.contains("o");
+        boolean ok = EnglishChecker.isEnglish(lines);
+        return ok;
     }
 
     private static List<String> readFile(final String pathname) throws IOException {
-        BufferedReader reader = new BufferedReader(new FileReader(new File(pathname)));
-        List<String> lines = new ArrayList<>();
-        String line;
-        while ((line = reader.readLine()) != null) {
-            lines.add(line);
-        }
-        reader.close();
+        List<String> lines = FileDataReader.readFile(pathname);
         return lines;
     }
 }

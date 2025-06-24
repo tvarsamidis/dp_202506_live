@@ -39,8 +39,10 @@ public class MainNew {
     }
 
     private static List<String> convertToUpper(List<String> lines) {
-        List<String> upperLines = UpperCaseConverter.convertToUpper(lines);
-        return upperLines;
+        UpperCaseConverter converter = new UpperCaseConverter();
+        converter.setInputLines(lines);
+        converter.convert();
+        return converter.getOutputLines();
     }
 
     private static void saveToFile(final String fileName, List<String> lines) throws IOException {

@@ -1,34 +1,21 @@
 package gr.codelearn.dp.service;
 
+import gr.codelearn.dp.interfaces.DataConverter;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class UpperCaseConverter {
+public class UpperCaseConverter implements DataConverter {
 
-    private List<String> inputLines;
-    private List<String> outputLines;
-
-    public List<String> getInputLines() {
-        return inputLines;
+    @Override
+    public List<String> convertData(List<String> lines) {
+        return convertLines(lines);
     }
 
-    public void setInputLines(List<String> inputLines) {
-        this.inputLines = new ArrayList<>(inputLines);
+    private List<String> convertLines(List<String> lines) {
+        List<String> newLines = new ArrayList<>();
+        for (String s : lines) newLines.add(s.toUpperCase());
+        return newLines;
     }
-
-    public List<String> getOutputLines() {
-        return new ArrayList<>(outputLines);
-    }
-
-    public void convert() {
-        outputLines = new ArrayList<>();
-        for (String line : inputLines) {
-            outputLines.add(line.toUpperCase());
-        }
-    }
-
-//    public List<String> convertToUpper(List<String> lines) {
-//        return convert(lines);
-//    }
 
 }

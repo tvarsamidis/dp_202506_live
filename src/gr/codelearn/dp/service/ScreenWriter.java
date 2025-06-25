@@ -4,22 +4,17 @@ import gr.codelearn.dp.dto.Response;
 import gr.codelearn.dp.exception.BusinessException;
 import gr.codelearn.dp.interfaces.DataSender;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 
-public class FileDataWriter implements DataSender {
+public class ScreenWriter implements DataSender {
     private List<String> lines;
     private String target;
     private Response response = new Response();
 
-    private void writeFile() throws IOException {
-        PrintWriter writer = new PrintWriter(new FileWriter(new File(target)));
+    private void showFile() {
+        System.out.println("Target = " + target);
         for (String s : lines)
-            writer.write(s + "\n");
-        writer.close();
+            System.out.println(s);
     }
 
     @Override
@@ -30,19 +25,16 @@ public class FileDataWriter implements DataSender {
     @Override
     public void setTarget(String target) {
         this.target = target;
+
+        // Could be a business exception if there is no concept of "target"
+//        BusinessException be = new BusinessException("Cannot set pathname for screen");
+//        response.setException(be);
+//        response.setError(true);
     }
 
     @Override
     public void execute() throws BusinessException {
-        try {
-            writeFile();
-        } catch (IOException e) {
-            e.printStackTrace();
-            BusinessException be = new BusinessException("Cannot send data to file", e);
-            response.setException(be);
-            response.setError(true);
-            throw be;
-        }
+        showFile();
     }
 
     @Override

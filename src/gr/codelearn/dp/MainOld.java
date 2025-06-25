@@ -23,9 +23,9 @@ public class MainOld {
             }
             reader.close();
             if (!lines.get(0).toLowerCase().contains("e") &&
-                !lines.get(0).toLowerCase().contains("t") &&
-                !lines.get(0).toLowerCase().contains("a") &&
-                !lines.get(0).toLowerCase().contains("o")) {
+                    !lines.get(0).toLowerCase().contains("t") &&
+                    !lines.get(0).toLowerCase().contains("a") &&
+                    !lines.get(0).toLowerCase().contains("o")) {
                 System.out.println("No english text, no processing done");
                 System.exit(1);
             }
